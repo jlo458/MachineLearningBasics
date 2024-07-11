@@ -1,4 +1,5 @@
 # RMSE Function 
+# Can be used as a method to check when a program for linear regression should end
 
 def RMSE(labels, predictions): 
   n = len(labels) 
