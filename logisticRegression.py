@@ -57,6 +57,36 @@ def logisticRegressionAlg(features, labels, epochs = 1000):
 
 print(logisticRegressionAlg(features, labels))
 
+# This is logistic regression using turicreate 
+
+import turicreate as tc 
+import numpy as np
+import utils
+import matplotlib
+matplotlib.use('TkAgg')  
+import matplotlib.pyplot as plt
+
+features = np.array([[1,0],[0,2],[1,1],[1,2],[1,3],[2,2],[3,2],[2,3]])
+labels = np.array([0,0,0,0,1,1,1,1]) 
+
+data = tc.SFrame({'x1' : features[:,0], 'x2': features[:,1], 'y': labels})
+#print(data)
+
+classifier = tc.logistic_classifier.create(data, 
+                                           features = ['x1','x2'],
+                                           target = 'y',
+                                           validation_set=None)
+
+bias, w1, w2 = classifier.coefficients['value']
+
+utils.plotPoints(features, labels)
+utils.drawLine(w1, w2, bias)
+plt.show()
+
+
+
+
+
 
 
 
