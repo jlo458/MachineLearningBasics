@@ -83,6 +83,31 @@ utils.plotPoints(features, labels)
 utils.drawLine(w1, w2, bias)
 plt.show()
 
+# Classifying IMDB movie reviews 
+
+import turicreate as tc
+
+movies = tc.SFrame('./IMDB_Dataset.csv')  # Find on Luis Serrano git 
+
+movies['Words'] = tc.text_analytics.count_words(movies['review'])  # Places all words in dict 'Words' with letter count 
+model = tc.logistic_classifier.create(movies, features=['words'], target='sentiment')  # Makes logistic classifier on words about sentiment (P/N) 
+
+weights = model.coefficients 
+print(weights) 
+
+weights.sort('value', ascending=False)  # From highest to lowest 
+weights[weights['index']=='wonderful']  # Gives value of wonderful 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
