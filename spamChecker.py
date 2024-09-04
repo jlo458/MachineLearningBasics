@@ -40,4 +40,10 @@ def predictNaiveBayes(email):
     prodHams = np.prod(hams) * numHam
     return prodSpams/(prodSpams+prodHams)
 
-print(predictNaiveBayes("you had an accident recently, enter your bank details"))
+pred = predictNaiveBayes("you had an accident recently, enter your bank details"))
+
+if pred >= 0.5: 
+    print("Likely Spam!") 
+
+else: 
+    print("Seems fine")
