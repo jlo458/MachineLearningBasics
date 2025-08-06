@@ -21,7 +21,7 @@ tf.random.set_seed(1)
 
 # Loading Circle Dataset 
 
-df = pd.read_csv('one_circle.csv', index_col=0)
+df = pd.read_csv('one_circle.csv', index_col=0)  # File for circle
 x = np.array(df[['x_1','x_2']])
 y = np.array(df['y']).astype(int)
 #utils.plotPoints(x,y)
