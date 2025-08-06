@@ -28,6 +28,7 @@ def plotPoints(features, labels):
     pyplot.xlabel("aack")
     pyplot.ylabel("beep")
     pyplot.legend(['Sad', 'Happy'])
+    pyplot.show()
 
 def drawLine(a,b,c, starting=0, ending=3, **kwargs): 
     x = np.linspace(starting, ending, 1000)
