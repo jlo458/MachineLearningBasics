@@ -34,6 +34,10 @@ def drawLine(a,b,c, starting=0, ending=3, **kwargs):
     x = np.linspace(starting, ending, 1000)
     pyplot.plot(x, (-a*x-c)/b, **kwargs)
 
+f = lambda x: int(x[1]>x[0])
+def g(Z):
+    return np.array([f(i) for i in Z])
+
 def plotModel(X, y, model, size_of_points=100):
     X = np.array(X)
     y = np.array(y)
@@ -43,10 +47,10 @@ def plotModel(X, y, model, size_of_points=100):
     xx, yy = np.meshgrid(np.arange(x_min, x_max, plot_step),
                          np.arange(y_min, y_max, plot_step))
     Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
-    Z = Z.reshape(xx.shape)
+    Z = g(Z).reshape(xx.shape)
     pyplot.contourf(xx, yy, Z, colors=['red', 'blue'], alpha=0.2, levels=range(-1,2))
     pyplot.contour(xx, yy, Z,colors = 'k',linewidths = 1)
     plotPoints(X, y)
-    pyplot.show()
+    pyplot.show() 
 
 
