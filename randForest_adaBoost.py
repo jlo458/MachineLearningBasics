@@ -7,7 +7,7 @@ import utils
 
 from sklearn.tree import DecisionTreeClassifier 
 from sklearn import tree 
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 
 np.random.seed(0) 
 
@@ -36,7 +36,7 @@ spam_dataset = pd.DataFrame(data=emails, columns=["Lottery", "Sale", "Spam"])
 features = spam_dataset[["Lottery","Sale"]]
 labels = spam_dataset["Spam"]
 
-#utils.plotPoints(features, labels)
+# Bagging using random forest classifier 
 
 # Overfitting Tree
 '''decision_tree_classifier = DecisionTreeClassifier(random_state=0) 
@@ -79,6 +79,15 @@ utils.plotModel(features, labels, random_forest_classifier)
 random_forest_classifier2 = RandomForestClassifier(random_state=0, n_estimators=5, max_depth=1) 
 random_forest_classifier2.fit(features, labels)
 random_forest_classifier2.score(features, labels)
-utils.plotModel(features, labels, random_forest_classifier2)
+utils.plotModel(features, labels, random_forest_classifier2) 
+
+
+# CODE FOR ADABOOST (BOOSTING)
+# Set random state for same results
+addyClassifier = AdaBoostClassifier(n_estimators=16) 
+addyClassifier.fit(features, labels)
+print(addyClassifier.score(features, labels))
+
+utils.plotModel(features, labels, addyClassifier)
 
 
