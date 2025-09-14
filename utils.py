@@ -54,3 +54,12 @@ def plotModel(X, y, model, size_of_points=100):
     pyplot.show() 
 
 
+def plot_regressor(features, labels, model):
+    x = np.linspace(0,85,1000)
+    pyplot.scatter(features, labels)
+    pyplot.plot(x, model.predict(x.reshape([-1,1])))
+    pyplot.xlabel("Age")
+    pyplot.ylabel("Days per week")
+    pyplot.show()
+
+
