@@ -26,3 +26,29 @@ clean_data["Embarked"] = clean_data["Embarked"].fillna('U')
 print(clean_data["Embarked"])  
 
 clean_data.to_csv("./titanic_clean.csv", index=None)
+
+# Makng the data useful (turning categorical into quantative etc) 
+
+
+import pandas as pd 
+
+data = pd.read_csv("./preprocessed_data2.csv", index_col=None) 
+
+'''classCols = pd.get_dummies(data['Pclass'], prefix='Pclass')
+data = pd.concat([data, classCols], axis=1)
+data = data.drop(['Pclass'], axis=1)
+
+data.to_csv("./preprocessed_data2.csv", index=None)'''
+
+
+'''genderCols = pd.get_dummies(data['Sex'], prefix='sex') 
+embarkedCols = pd.get_dummies(data["Embarked"], prefix='embarked')
+
+data = pd.concat([data, genderCols], axis=1)
+data = pd.concat([data, embarkedCols], axis=1)
+
+data = data.drop(['Sex', 'Embarked'], axis=1)
+
+print(data)
+
+data.to_csv("./preprocessed_data.csv", index=None)'''
