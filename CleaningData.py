@@ -52,3 +52,10 @@ data = data.drop(['Sex', 'Embarked'], axis=1)
 print(data)
 
 data.to_csv("./preprocessed_data.csv", index=None)'''
+
+# Binning (int into categorised labels - age may not be linear factor)
+'''bins = [0, 10, 20, 30, 40, 50, 60, 70, 80]
+categorised_age = pd.cut(data['Age'], bins) 
+data['Categorised_Age'] = categorised_age
+data = data.drop(["Age"], axis=1) '''
+
